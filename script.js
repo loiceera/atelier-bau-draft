@@ -1,0 +1,1 @@
+const items=document.querySelectorAll('.project,.studio');items.forEach(x=>x.classList.add('reveal'));const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.08});items.forEach(x=>io.observe(x));
