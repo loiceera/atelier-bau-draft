@@ -14,7 +14,7 @@ document.querySelectorAll(".project").forEach((p) => {
   p.addEventListener("mouseleave", () => cursor.classList.remove("on"));
 });
 const reveals = document.querySelectorAll(
-  ".project,.statement h2,.intro,.practice-copy",
+  ".project,.statement h2,.intro,.manifesto h2,.manifesto-lines p,.practice-copy",
 );
 reveals.forEach((x) => x.classList.add("reveal"));
 const io = new IntersectionObserver(
