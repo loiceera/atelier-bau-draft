@@ -293,7 +293,7 @@ button {
 .patio-main img { object-position: 50% 50%; }
 .patio-crop { margin: -18vw 0 0; overflow: hidden; position: relative; z-index: 3; }
 .crop-a { grid-column: 1 / 6; height: 48vw; }
-.crop-a img { object-position: 13% 53%; transform: scale(1.65); }
+.crop-a img { object-position: 50% 50%; }
 .crop-b { grid-column: 8 / 13; height: 38vw; margin-top: 8vw; }
 .crop-b img { object-position: 86% 48%; transform: scale(1.75); }
 .patio-meta {
