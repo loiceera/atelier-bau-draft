@@ -481,6 +481,49 @@ button {
   font: 10px DM Mono;
   align-self: center;
 }
+
+.project-viewer {
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #111;
+  color: #f5f2ea;
+  overflow: hidden;
+}
+.project-viewer[open] { display: grid; grid-template-columns: 1fr; grid-template-rows: 1fr auto; }
+.project-viewer::backdrop { background: #111; }
+.project-viewer figure { margin: 0; min-height: 0; overflow: hidden; }
+.project-viewer figure img { width: 100%; height: 100%; object-fit: contain; }
+.viewer-close, .viewer-nav {
+  position: fixed;
+  z-index: 2;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font: 400 12px/1 "DM Mono", monospace;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.viewer-close { top: 24px; right: 28px; padding: 12px; background: #d7ff21; color: #111; }
+.viewer-nav { top: 50%; width: 54px; height: 54px; border: 1px solid rgba(255,255,255,.45); border-radius: 50%; transform: translateY(-50%); font-size: 20px; }
+.viewer-prev { left: 24px; }
+.viewer-next { right: 24px; }
+.viewer-info { display: flex; justify-content: space-between; align-items: end; gap: 32px; padding: 18px 28px 24px; }
+.viewer-info h2 { margin: 0; font: 400 clamp(28px,4vw,58px)/.95 "Instrument Serif", serif; }
+.viewer-info p, .viewer-count { margin: 7px 0 0; font: 300 11px/1.4 "DM Mono", monospace; text-transform: uppercase; }
+
+@media (max-width: 700px) {
+  .viewer-close { top: 14px; right: 14px; }
+  .viewer-nav { top: auto; bottom: 22px; width: 44px; height: 44px; }
+  .viewer-prev { left: 14px; }
+  .viewer-next { right: 14px; }
+  .viewer-info { padding: 14px 70px 22px; }
+  .viewer-info h2 { font-size: 27px; }
+}
 .practice {
   background: #181818;
   color: #eee;
