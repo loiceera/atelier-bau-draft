@@ -9,10 +9,6 @@ document.addEventListener("mousemove", (e) => {
   cursor.style.left = e.clientX + "px";
   cursor.style.top = e.clientY + "px";
 });
-document.querySelectorAll(".project").forEach((p) => {
-  p.addEventListener("mouseenter", () => cursor.classList.add("on"));
-  p.addEventListener("mouseleave", () => cursor.classList.remove("on"));
-});
 const projects = [...document.querySelectorAll(".project")];
 const viewer = document.querySelector(".project-viewer");
 const viewerImage = viewer.querySelector("img");
@@ -33,6 +29,12 @@ function showProject(index) {
 }
 
 projects.forEach((project, index) => {
+  const openButton = document.createElement("button");
+  openButton.className = "project-open";
+  openButton.type = "button";
+  openButton.textContent = "View";
+  openButton.setAttribute("aria-label", `View ${project.querySelector("h3").textContent}`);
+  project.querySelector("figure").append(openButton);
   project.addEventListener("click", () => {
     showProject(index);
     viewer.showModal();
