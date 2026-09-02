@@ -49,7 +49,7 @@ button {
 }
 .loader-mark span {
   display: block;
-  font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Archivo Black", "Arial Narrow", sans-serif;
   font-size: clamp(92px, 14vw, 210px);
   font-weight: 700;
   line-height: 0.72;
@@ -151,7 +151,8 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(0.65);
+  filter: saturate(0.72) contrast(1.03);
+  object-position: center 51%;
   transform: scale(1.06);
   animation: heroIn 1.6s 0.6s cubic-bezier(0.2, 0.7, 0.1, 1) forwards;
 }
@@ -174,7 +175,8 @@ button {
   line-height: 0.72;
   letter-spacing: -0.085em;
   margin: 0;
-  font-weight: 500;
+  font-family: "Archivo Black", Inter, sans-serif;
+  font-weight: 400;
 }
 .hero h1 span {
   margin-left: 14vw;
@@ -191,7 +193,8 @@ button {
   left: 2.4vw;
   right: 2.4vw;
   display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
   font: 9px DM Mono;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -220,6 +223,83 @@ button {
   margin: 8vw 0 0 auto;
   font-size: 18px;
   line-height: 1.5;
+}
+.statement-image {
+  grid-column: 1 / -1;
+  margin: 15vw 0 0;
+}
+.statement-image img {
+  width: 100%;
+  height: 58vw;
+  max-height: 980px;
+  display: block;
+  object-fit: cover;
+}
+.statement-image figcaption,
+.patio-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-top: 10px;
+  border-top: 1px solid var(--ink);
+  font: 9px/1.4 DM Mono;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.patio-story {
+  min-height: 190vh;
+  padding: 5vw 2.4vw 10vw;
+  background: #151515;
+  color: #f2f0e8;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.2vw;
+  position: relative;
+}
+.patio-title {
+  grid-column: 1 / 7;
+  align-self: start;
+  position: sticky;
+  top: 5vw;
+  z-index: 2;
+  mix-blend-mode: difference;
+}
+.patio-title p,
+.patio-title span {
+  font: 9px DM Mono;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.patio-title h2 {
+  margin: 10vw 0 2vw;
+  font: 400 clamp(64px, 9vw, 150px)/.84 Instrument Serif;
+  letter-spacing: -.05em;
+}
+.patio-title h2 em { font-weight: 400; color: var(--acid); }
+.patio-main {
+  grid-column: 6 / 13;
+  height: 105vw;
+  max-height: 1600px;
+  margin: 0;
+  overflow: hidden;
+}
+.patio-main img,
+.patio-crop img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.patio-main img { object-position: 50% 50%; }
+.patio-crop { margin: -18vw 0 0; overflow: hidden; position: relative; z-index: 3; }
+.crop-a { grid-column: 1 / 6; height: 48vw; }
+.crop-a img { object-position: 13% 53%; transform: scale(1.65); }
+.crop-b { grid-column: 8 / 13; height: 38vw; margin-top: 8vw; }
+.crop-b img { object-position: 86% 48%; transform: scale(1.75); }
+.patio-meta {
+  grid-column: 1 / 13;
+  margin-top: 7vw;
+  border-color: #666;
 }
 .manifesto {
   min-height: 120vh;
@@ -471,7 +551,7 @@ footer div {
   flex-direction: column;
 }
 .reveal {
-  opacity: 0;
+  opacity: 1;
   transform: translateY(45px);
   transition:
     opacity 0.9s,
@@ -620,16 +700,28 @@ footer div {
   .menu { align-items: center; }
   .hero { height: 100svh; min-height: 620px; }
   .hero-image img {
-    content: url("https://images.squarespace-cdn.com/content/v1/62876cae9fc3433ebf3b9b02/1657887824316-K1D437SW1RMG0F3BOX3W/forrest+house.png?format=1500w");
-    object-position: center; filter: saturate(.55) brightness(.72);
+    content: url("assets/patio.jpg");
+    object-position: 50% center; filter: saturate(.68) brightness(.72);
   }
   .hero-image:after { background: linear-gradient(0deg,rgba(0,0,0,.72),transparent 62%),linear-gradient(180deg,rgba(0,0,0,.35),transparent 25%); }
   .hero h1 { font-size: 27.5vw; line-height: .72; color: #fff; }
   .hero-title p { margin-top: 7vw; color: #fff; }
-  .hero-index { top: auto; bottom: 24px; color: #fff; }
+  .hero-index { top: auto; bottom: 24px; color: #fff; grid-template-columns: 1fr auto; }
+  .hero-index span:nth-child(2) { display: none; }
   .statement { padding: 28vw 18px 24vw; }
   .statement h2 { font-size: 15.5vw; margin-top: 12vw; line-height: .93; }
   .intro { width: 84%; margin-top: 14vw; font-size: 16px; }
+  .statement-image { margin-top: 25vw; }
+  .statement-image img { height: 115vw; }
+  .statement-image figcaption span:last-child { display: none; }
+  .patio-story { min-height: auto; padding: 18vw 18px 24vw; display: block; }
+  .patio-title { position: relative; top: auto; margin-bottom: 16vw; }
+  .patio-title h2 { margin: 14vw 0 5vw; font-size: 20vw; }
+  .patio-main { width: calc(100% + 36px); height: 142vw; margin-left: -18px; }
+  .patio-crop { margin-top: -17vw; }
+  .crop-a { width: 72%; height: 82vw; }
+  .crop-b { width: 64%; height: 70vw; margin: 12vw 0 0 auto; }
+  .patio-meta { display: grid; grid-template-columns: 1fr 1fr; margin-top: 20vw; }
   .manifesto { min-height: auto; padding: 18px 18px 28vw; }
   .manifesto-plan { inset: 17vw -36vw auto -28vw; place-items: start; }
   .manifesto-plan img { width: 170vw; opacity: .32; transform: rotate(8deg); }
